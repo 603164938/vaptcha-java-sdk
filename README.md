@@ -70,5 +70,5 @@ Response.Write(vaptcha.DownTime(data));
 
 #### Step5.DEMO
 
-- 详细Demo请在[https://github.com/VAPTCHA/vaptcha-java-sdk](https://github.com/VaptchaTeam/vaptcha-java-sdk)中查看
+- 详细Demo请在[https://github.com/vaptcha/vaptcha-java-sdk](https://github.com/VaptchaTeam/vaptcha-java-sdk)中查看
 
