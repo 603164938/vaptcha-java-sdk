@@ -1,7 +1,7 @@
 # vaptcha-java-sdk
 #### Step1.环境准备
 
-- Vaptcha Java SDK 适用于 Java 7 及以上版本。demo使用的是springboot,maven使用建议在3以上
+- Vaptcha Java SDK 适用于 Java 7 及以上版本。demo使用的是springboot,同时maven使用建议在3以上
 
 
 - 要使用Vaptcha Java SDK，您需要一个Vaptcha账号、一个验证单元以及一对VID和Key。请在Vaptcha验证管理后台查看。
@@ -43,20 +43,20 @@ Vaptcha vaptcha = new Vaptcha(VaptchaConfig.VID,VaptchaConfig.KEY);
 
 ```java
 //获取流水号
-String challenge=vaptcha.GetChallenge();
+String challenge=vaptcha.getChallenge();
 ```
 
 - 二次验证
 
 ```java
 //获取流水号字段
-String challenge = Request.Form["challenge"];
+String challenge = Request["challenge"];//这里需要用户自己实现获取参数的代码
 //获取token字段
 String token = Request["challenge"];//这里需要用户自己实现获取参数的代码
 //获取场景字段
 String sceneId = Request["sceneId"];//这里需要用户自己实现获取参数的代码
 //二次验证获取结果
-boolean result = vaptcha.Validate(challenge, token, sceneId);
+boolean result = vaptcha.validate(challenge, token, sceneId);
 ```
 
 - 宕机模式 使用GET请求
@@ -65,10 +65,16 @@ boolean result = vaptcha.Validate(challenge, token, sceneId);
 //获取数据
 string data = Request["data"];//这里需要用户自己实现获取参数的代码
 //执行宕机模式交互操作
-Response.Write(vaptcha.DownTime(data));
+Response.Write(vaptcha.downTime(data));
 ```
 
 #### Step5.DEMO
 
-- 详细Demo请在[https://github.com/vaptcha/vaptcha-java-sdk](https://github.com/VaptchaTeam/vaptcha-java-sdk)中查看
+- 详细Demo请在[https://github.com/vaptcha/vaptcha-java-sdk](https://github.com/VAPTCHA/vaptcha-java-sdk)中查看
+- Demo使用使用方式：
+0. 项目需要maven构建，所以需要先配置maven环境，具体见`http://maven.apache.org/install.html`
+1. 进入vaptcha-java-sdk目录执行：`mvn install`
+2. 进入demo目录执行：`mvn clean package`
+3. 进入demo目录下的target执行：`java -jar demo-1.0-SNAPSHOT.jar`
+4. 访问`http://127.0.0.1:8080/index.html`
 

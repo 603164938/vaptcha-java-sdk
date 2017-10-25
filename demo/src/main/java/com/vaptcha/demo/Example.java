@@ -31,15 +31,11 @@ public class Example {
         return dowTime;
     }
 
-    @RequestMapping("/validate")
-    public String validate(String challenge, String token, String sceneId){
-        vaptcha.validate(challenge,token,sceneId);
-        return "true";
-    }
-
     /**
      * 获取用户的请求
      * @param entity(challenge,token)
+     * 这里前端是通过formdata的数据发送的，所以接受参数的时候可以不用注解
+     * 如果是payload里面需要用@requestBody的方式接收，写过springmvc都知道吧
      * @return
      */
     @RequestMapping("/login")

@@ -47,7 +47,7 @@
                     form.phone = $('input[name=phone]').val();
                     form.password = $('input[name=password]').val();
                     $.post('/login', form, function(data){
-                        alert(data.msg)
+                        alert(data)
                     });
                 },
                 fail: function () {//验证失败时执行回调  
