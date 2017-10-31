@@ -76,5 +76,5 @@ Response.Write(vaptcha.downTime(data));
 1. 进入vaptcha-java-sdk目录执行：`mvn install`
 2. 进入demo目录执行：`mvn clean package`
 3. 进入demo目录下的target执行：`java -jar demo-1.0-SNAPSHOT.jar`
-4. 访问`http://127.0.0.1:8080/index.html`
+4. 访问`http://127.0.0.1:4396/index.html`
 
