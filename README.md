@@ -21,6 +21,9 @@ git clone https://github.com/VAPTCHA/vaptcha-java-sdk.git
 手动下载获取:
 
 - 引用Vaptcha SDK项目，在你的项目中使用以下代码即可导入SDK:
+ ```java
+ package com.vaptcha;
+ ```
 
 #### Step3.配置接口
 
