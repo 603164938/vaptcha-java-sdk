@@ -35,11 +35,7 @@ git clone https://github.com/VAPTCHA/vaptcha-java-sdk.git
 3. 进入demo目录下的target执行：`java -jar demo-1.0-SNAPSHOT.jar`
 4. 访问`http://127.0.0.1:4396/index.html`
 
-#### Step4.配置接口
-
-- SDK中包含了三个需要配置的接口，分别是：getChallenge(获取流水号)，validate(二次验证)，downTime(宕机模式提供与前端sdk交互)，需要在站点中提供访问的url。
-
-#### Step5.代码示例
+#### Step4.SDK接口
 
 - 初始化Vaptcha及备注
 
