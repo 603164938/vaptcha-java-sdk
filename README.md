@@ -25,11 +25,21 @@ git clone https://github.com/VAPTCHA/vaptcha-java-sdk.git
  package com.vaptcha;
  ```
 
-#### Step3.配置接口
+#### Step3.DEMO
+> demo的vid和key由vaptcha官方免费提供，只可在localhost:4396下使用，缺少一些限制，可能存在安全隐患。在实际生产环境中，我们建议你登陆vaptcha管理后台，在验证管理中添加对应的验证单元，并把domain参数设置为实际环境中的域名。
+- 详细Demo请在[https://github.com/vaptcha/vaptcha-java-sdk](https://github.com/VAPTCHA/vaptcha-java-sdk)中查看
+- Demo使用使用方式：
+0. 项目需要maven构建，所以需要先配置maven环境，具体见`http://maven.apache.org/install.html`
+1. 进入vaptcha-java-sdk目录执行：`mvn install`
+2. 进入demo目录执行：`mvn clean package`
+3. 进入demo目录下的target执行：`java -jar demo-1.0-SNAPSHOT.jar`
+4. 访问`http://127.0.0.1:4396/index.html`
+
+#### Step4.配置接口
 
 - SDK中包含了三个需要配置的接口，分别是：getChallenge(获取流水号)，validate(二次验证)，downTime(宕机模式提供与前端sdk交互)，需要在站点中提供访问的url。
 
-#### Step4.代码示例
+#### Step5.代码示例
 
 - 初始化Vaptcha及备注
 
@@ -41,43 +51,28 @@ String KEY = "xxxxxxxxxxxxxxxxxxxxxxxx";
 Vaptcha vaptcha = new Vaptcha(VaptchaConfig.VID,VaptchaConfig.KEY);
 
 ```
+SDK提供以下三个接口：
 
-- 获取流水号
+- 获取流水号接口 `getChallenge(sceneId)` ，返回`json`字符串
 
-```java
-//获取流水号
-String challenge=vaptcha.getChallenge();
-```
+  参数说明:
 
-- 二次验证
+  `sceneId`： 选填，场景id，请在vaptcha管理后台查看
+ 
+- 二次验证接口 `validate(challenge, token[, sceneId])`，返回`Boolen`值
 
-```java
-//获取流水号字段
-String challenge = Request["challenge"];//这里需要用户自己实现获取参数的代码
-//获取token字段
-String token = Request["challenge"];//这里需要用户自己实现获取参数的代码
-//获取场景字段
-String sceneId = Request["sceneId"];//这里需要用户自己实现获取参数的代码
-//二次验证获取结果
-boolean result = vaptcha.validate(challenge, token, sceneId);
-```
+  参数说明: 
 
-- 宕机模式 使用GET请求
+  `challenge`： 必填，客户端验证通过后返回的流水号
 
-```java
-//获取数据
-string data = Request["data"];//这里需要用户自己实现获取参数的代码
-//执行宕机模式交互操作
-Response.Write(vaptcha.downTime(data));
-```
+  `token`： 必填， 客户端验证通过后返回的令牌
 
-#### Step5.DEMO
+  `sceneId`： 选填，场景id，与`getChallenge(sceneId)`的场景id保持一致
 
-- 详细Demo请在[https://github.com/vaptcha/vaptcha-java-sdk](https://github.com/VAPTCHA/vaptcha-java-sdk)中查看
-- Demo使用使用方式：
-0. 项目需要maven构建，所以需要先配置maven环境，具体见`http://maven.apache.org/install.html`
-1. 进入vaptcha-java-sdk目录执行：`mvn install`
-2. 进入demo目录执行：`mvn clean package`
-3. 进入demo目录下的target执行：`java -jar demo-1.0-SNAPSHOT.jar`
-4. 访问`http://127.0.0.1:4396/index.html`
+
+- 宕机模式接口 `downTime(data)`，返回`json`字符串
+
+  参数说明:
+
+  `data`： GET请求返回的数据，`Request["data"]`;
 
