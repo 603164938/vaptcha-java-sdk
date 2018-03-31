@@ -4,11 +4,11 @@ public class VaptchaConfig {
     /// <summary>
     /// 验证单元ID
     /// </summary>
-    public static final String VID = "59f81616a485d5214ce5901e";
+    public static final String VID = "5abfce51a485d904100efffb";
     /// <summary>
     /// 验证单元密钥
     /// </summary>
-    public static final String KEY = "e3ecac73e8dd4acfbb23b4e07e791a94";
+    public static final String KEY = "fd87006229d840ba8683483b4dcf54cf";
     /// <summary>
     /// SDK版本号
     /// </summary>
